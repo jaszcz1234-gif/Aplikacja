@@ -13,7 +13,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - run: unzip -q mikrotik-app.zip
+      - run: unzip -q "$(find . -name '*.zip' | head -1)"
       - run: chmod +x setup-android.sh && ./setup-android.sh
         working-directory: mikrotik-app
       - run: chmod +x gradlew && ./gradlew assembleDebug

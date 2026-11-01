@@ -13,7 +13,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - run: unzip -q "$(find . -name '*.zip' | head -1)" && sed -i 's/Capacitor.registerPlugin("RouterOsApi")/Capacitor.Plugins.RouterOsApi/' mikrotik-app/www/ros.js
+      - run: unzip -q "$(find . -name '*.zip' | head -1)" && sed -i 's/Capacitor.registerPlugin("RouterOsApi")/Capacitor.Plugins.RouterOsApi/' mikrotik-app/www/ros.js && sed -i '/RB4011iGS+5HacQ2HnD",alias/ s/}$/},/' mikrotik-app/www/models.js
       - run: chmod +x setup-android.sh && ./setup-android.sh
         working-directory: mikrotik-app
       - run: chmod +x gradlew && ./gradlew assembleDebug
